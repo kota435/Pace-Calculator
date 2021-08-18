@@ -2,6 +2,7 @@
 input_distance=input("距離を入力してください")
 input_min=input("何分？")
 input_sec=input("何秒？")
+
 min_sec=int(input_min)*60+int(input_sec)
 warukazu=int(input_distance)/100
 handred_1=min_sec/warukazu #100mのタイム
