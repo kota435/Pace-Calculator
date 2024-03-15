@@ -1,4 +1,5 @@
 from tabulate import tabulate
+import sys
 
 def input_time():
     input_min=input("何分")
@@ -8,7 +9,21 @@ def input_time():
 
 def input_dis():
     input_distance=int(input('距離を入力してください'))
-    return input_distance
+    
+    if check_distance(input_distance):
+        print('100m単位で入力して下さい')
+        sys.exit()
+    else:
+        return input_distance
+
+def check_distance(num):
+    ones_place=num%10
+    tens_place=(num//10)%10
+    
+    if ones_place != 0 or tens_place != 0:
+        return True
+    else:
+        return False
 
 def create_list():
     input_distance=input_dis()
