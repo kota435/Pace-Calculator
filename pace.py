@@ -44,7 +44,7 @@ def convert_to_min(timelist):
         else:
             minutes=seconds//60
             remaing_seconds=seconds%60
-            min_sec_list.append(str(minutes)+"'"+str(remaing_seconds))
+            min_sec_list.append(f'{minutes}\'{remaing_seconds}')
     return min_sec_list
 
 def output_sprit_table(distance,time):
