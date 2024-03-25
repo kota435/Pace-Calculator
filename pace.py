@@ -1,16 +1,23 @@
 from tabulate import tabulate
-import sys
 
-def convert_to_sec(minutes,secounds):
+def validate_time_to_sec():
+    #入力されたタイムが正しい形式で入力されているか確認、秒変換を行い、入力されたタイムを返す。
+    while True:
+        try:
+            minutes,secounds=int(input('何分？:')),int(input('何秒？:'))
+            break
+        except ValueError:
+            print('半角数字を入力して下さい')
+
     #分単位から秒単位に変更
-    min_sec=int(minutes)*60+int(secounds)
+    min_sec=minutes*60+secounds
     return min_sec
 
 def validate_distance_input():
-    #入力された距離が100m単位ではなかった時、エラーメッセージを出し、スクリプトを終了させる
+    #入力された距離が正しい形式で入力されてるか確認し、入力された距離を返す
     while True:
         try:
-            distance=int(input('100m単位で距離を入力して下さい。'))
+            distance=int(input('100m単位で距離を入力して下さい。:'))
             if check_distance(distance):
                 print('100m単位で入力して下さい。')
                 continue
@@ -37,8 +44,8 @@ def create_list_distance(distance):
 
 def create_list_time(min_sec,input_distance):
     #入力されたタイムを距離に対しての100mのタイムに
-    time_per_100m=min_sec*100/input_distance 
-    time_list=list(range(int(time_per_100m),min_sec+int(time_per_100m),int(time_per_100m))) #100mごとのタイムの要素作成
+    time_per_100m=int(min_sec*100/input_distance) 
+    time_list=list(range(time_per_100m,min_sec+time_per_100m,time_per_100m)) #100mごとのタイムの要素作成
     return time_list
 
 def convert_to_min(timelist):
@@ -63,9 +70,7 @@ def output_sprit_table(distance,time):
      
 def main():
     distance=validate_distance_input()
-    input_min=input("何分")
-    input_sec=input("何秒？")
-    min_sec=convert_to_sec(input_min,input_sec)
+    min_sec=validate_time_to_sec()
     time_list=create_list_time(min_sec,distance)
     min_sec_list=convert_to_min(time_list)
     distance_list=create_list_distance(distance)
