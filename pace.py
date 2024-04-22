@@ -66,7 +66,7 @@ def output_sprit_table(distance,time):
 		'distance':distance,
         'raptime':time
 	}
-    print(tabulate(date,headers=['distance(m)','raptime(s)'],tablefmt='simple_grid'))
+    print(tabulate(date,headers=['distance(m)','sprittime(s)'],tablefmt='simple_grid'))
      
 def main():
     distance=validate_distance_input()
