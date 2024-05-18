@@ -7,7 +7,13 @@ def calculate(*args):
         distance_value = int(distance.get()) 
         minutes_value = int(minutes.get())
         secounds_value = int(secounds.get())
-        output.set(str(secounds_value)) #確認用
+        min_sec = minutes_value*60 + secounds_value
+        distance_list = pace.create_list_distance(distance_value)
+        time_list = pace.create_list_time(min_sec,distance_value)
+
+        for (distance_100m,time_100m) in zip(distance_list,time_list):
+            ttk.Label(frm2,text=distance_100m).grid(column=0)
+            ttk.Label(frm2,text=time_100m).grid(column=1)
     except ValueError:
         pass
 
@@ -15,7 +21,9 @@ root = Tk()
 root.title("SpritTimeCaluculate")
 
 frm = ttk.Frame(root, padding=10)
+frm2 = ttk.Frame(root,padding=10)
 frm.grid()
+frm2.grid()
 
 ttk.Label(frm, text="SpritTimeCaluculater").grid(column=0, row=0)
 distance = StringVar()
