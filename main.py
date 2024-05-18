@@ -22,14 +22,14 @@ def calculate(*args):
         pass
 
 root = Tk()
-root.title("SpritTimeCaluculate")
+root.title("SplitTimeCaluculate")
 
 frm = ttk.Frame(root, padding=10)
 frm2 = ttk.Frame(root,padding=10)
 frm.grid()
 frm2.grid()
 
-ttk.Label(frm, text="Sprit Time Caluculater").grid(column=0, row=0)
+ttk.Label(frm, text="Split Time Caluculater").grid(column=0, row=0)
 distance = StringVar()
 minutes = StringVar()
 secounds = StringVar()
